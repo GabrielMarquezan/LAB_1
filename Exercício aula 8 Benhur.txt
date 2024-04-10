@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main()
+{
+   for (int n = 0; n < 100; n = n + 1)
+   {
+       if(n % 10 == 9)
+       {
+           printf("%2d\n", n);
+       }
+       else
+       {
+           printf("%2d ", n);
+       }    
+   } 
+}

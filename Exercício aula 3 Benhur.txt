@@ -1,0 +1,70 @@
+mudança de char pra int
+
+#include <stdio.h>
+
+int main()
+{
+  int n1;
+  int n2;
+  int media;
+ 
+  char d1;
+  char d2;
+  char d3;
+
+  n1 = 1410;
+  n2 = 306;
+
+  media = (n1 + n2) / 2; //Tudo certo, todas as operações são int
+
+  d1 = media / 100 % 10 + 48; //Realiza as operações em int e depois converte pra char sem erros por serem caracteres únicos
+  d2 = media / 10  % 10 + 48; 
+  d3 = media / 1   % 10 + 48;
+
+  putchar(d1);
+  putchar(d2);
+  putchar(d3);
+  putchar(10); //Interessante, não sabia que \n só funcionava com printf
+}
+
+versão com float
+
+#include <stdio.h>
+
+int main()
+{
+  float n1;
+  float n2;
+  float media;
+  
+  char aux1;
+  char aux2;
+ 
+  char d1;
+  char d2;
+  char d3;
+  char d4;
+
+  n1 = 1410;
+  n2 = 325;
+
+  media = (n1 + n2) / 2;
+  
+  aux1 = media / 100;
+  
+
+  d1 = aux1;
+  d2 = media / 10 - aux1 * 10; 
+  
+  aux2 = aux1 * 100 + d2 * 10;
+  
+  d3 = media - aux2;
+  d4 = media * 10 - (aux1 * 1000 + d2 * 100) - d3 * 10; 
+
+  putchar(d1 + 48);
+  putchar(d2 + 48);
+  putchar(d3 + 48);
+  putchar(44);
+  putchar(d4 + 48);
+  putchar(10);
+}

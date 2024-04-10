@@ -1,0 +1,378 @@
+PARTE 1:
+
+Exercício 1:
+
+#include <stdio.h>
+
+int main()
+{
+    float a, b;
+
+    printf("Digite um número: ");
+    scanf("%f", &a);
+
+    printf("Digite outro número: ");
+    scanf("%f", &b);
+
+    if( a > b)
+    {
+        printf("%.1f é maior que %.1f\n", a, b);
+    }
+    else
+    {
+        printf("%.1f é maior que %.1f\n", b, a);
+    }
+}
+
+Exercício 2:
+
+#include <stdio.h>
+
+int main()
+{
+    float a, b;
+
+    printf("Digite um número: ");
+    scanf("%f", &a);
+
+    printf("Digite outro número: ");
+    scanf("%f", &b);
+
+    if( a == b)
+    {
+        printf("%.1f e %.1f são iguais\n", a, b);
+    }
+    else if (b < a)
+    {
+        printf("%.1f é menor que %.1f\n", b, a);
+    }
+    else
+    {
+        printf("%.1f é menor que %.1f\n", a, b);
+    }
+}
+
+Exercício 3:
+
+#include <stdio.h>
+
+int main()
+{
+    int a;
+
+    printf("Digite um número: ");
+    scanf("%d", &a);
+
+    if(a % 2 == 0)
+    {
+        printf("%d é par\n", a);
+    }
+    else
+    {
+        printf("%d é ímpar\n", a);
+    }
+}
+
+Exercício 4:
+
+#include <stdio.h>
+
+int main()
+{
+    float a, b, c;
+
+    printf("Digite um número: ");
+    scanf("%f", &a);
+
+    printf("Digite outro número: ");
+    scanf("%f", &b);
+
+    printf("Só mais um: ");
+    scanf("%f", &c);
+
+    if(a > b && a > c)
+    {
+        printf("%.1f é o maior\n", a);
+    }
+    else if (b > c)
+    {
+        printf("%.1f é o maior\n", b);
+    }
+    else
+    {
+        printf("%.1f é o maior\n", c);
+    }
+}
+
+Exercício 5:
+
+#include <stdio.h>
+
+int main()
+{
+    float a, b, c;
+
+    printf("Digite um número: ");
+    scanf("%f", &a);
+
+    printf("Digite outro número: ");
+    scanf("%f", &b);
+
+    printf("Só mais um: ");
+    scanf("%f", &c);
+
+    if (a > b && b > c)
+    {
+        printf("%.1f é o número do meio\n", b);
+    }
+    else if (a > c && c > b)
+    {
+        printf("%.1f é o número do meio\n", c);
+    }
+    else if (b > a && a > c)
+    {
+        printf("%.1f é o número do meio\n", a);
+    }
+    else if (b > c && c > a)
+    {
+        printf("%.1f é o número do meio\n", c);
+    }
+    else if (c > a && a > b)
+    {
+        printf("%.1f é o número do meio\n", a);
+    }
+    else if (c > b && b > a)
+    {
+        printf("%.1f é o número do meio\n", b);
+    }
+    else
+    {
+        printf("Não existe número do meio\n");
+    }
+
+}
+
+Exercício 6:
+
+#include <stdio.h>
+
+int main()
+{
+    float n1, n2, ne, p1, p2, m, mf;
+
+    printf("Nota do primeiro semestre: ");
+    scanf("%f", &n1);
+
+    printf("Peso da nota: ");
+    scanf("%f", &p1);
+
+    printf("Nota do segundo semestre: ");
+    scanf("%f", &n2);
+
+    printf("Peso da nota: ");
+    scanf("%f", &p2);
+
+    m = (n1 * p1 + n2 * p2) / (p1 + p2);
+
+    if (m >= 7)
+    {
+        printf("Aluno aprovado!\nMédia final: %.1f\n", m);
+    }
+    else
+    {
+        printf("Nota do exame: ");
+        scanf("%f", &ne);
+
+        mf = (m + ne) / 2;
+
+        if (mf >= 5)
+        {
+            printf("Aluno aprovado!\nMédia final: %.1f\n", mf);
+        }
+        else 
+        {
+            printf("Aluno reprovado\nMédia final: %.1f\n", mf );
+        }
+    }
+
+}
+
+PARTE 2:
+
+Exercício 1: 
+#include <stdio.h>
+
+int main()
+{
+   float salario, aliquota, parcela, imposto;
+
+   printf("Qual é o seu salário?\n");
+   scanf("%f", &salario);
+
+   if (salario < 2259.21)
+   {
+        printf("Você está isento do Imposto de Renda\n");
+   }
+   else if (salario <= 2826.65)
+   {
+        aliquota = 0.075;
+        parcela = 169.44;
+        imposto = salario * aliquota - parcela;
+        
+        printf("A alíquota de imposto incidiente é %.1f%% e a parcela a deduzir é R$%.2f. Logo, o imposto a pagar é R$%.2f por mês, totalizando em R$%.2f por ano\n", aliquota * 100, parcela, imposto, imposto * 12);       
+   }
+   else if (salario <= 3751.05)
+   {
+        aliquota = 0.15;
+        parcela = 381.44;
+        imposto = salario * aliquota - parcela;
+
+        printf("A alíquota de imposto incidiente é %.1f%% e a parcela a deduzir é R$%.2f. Logo, o imposto a pagar é R$%.2f por mês, totalizando em R$%.2f por ano\n", aliquota * 100, parcela, imposto, imposto * 12);
+   }
+   else if (salario <= 4664.68)
+   {
+        aliquota = 0.225;
+        parcela = 662.77;
+        imposto = salario * aliquota - parcela;
+
+        printf("A alíquota de imposto incidiente é %.1f%% e a parcela a deduzir é R$%.2f. Logo, o imposto a pagar é R$%.2f por mês, totalizando em R$%.2f por ano\n", aliquota * 100, parcela, imposto, imposto * 12);
+   }
+   else
+   {
+        aliquota = 0.275;
+        parcela = 896.00;
+        imposto = salario * aliquota - parcela;
+
+        printf("A alíquota de imposto incidiente é %.1f%% e a parcela a deduzir é R$%.2f. Logo, o imposto a pagar é R$%.2f por mês, totalizando em R$%.2f por ano\n", aliquota * 100, parcela, imposto, imposto * 12);
+   }
+
+}
+
+Exercício 2/3:
+
+#include <stdio.h>
+
+float aliquota(float s);
+float parcela(float n);
+float imposto(float a, float b, float c);
+
+int main()
+{
+    float salario, ali, par, imp;
+
+    printf("Qual é o seu salário?\n");
+    scanf("%f", &salario);
+
+    ali = aliquota(salario);
+    par = parcela(salario);
+    imp = imposto(salario, ali, par);
+
+    printf("A alíquota de imposto incidiente é %.1f%% e a parcela a deduzir é R$%.2f. Logo, o imposto a pagar é R$%.2f por mês, totalizando em R$%.2f por ano\n", ali, par, imp, imp * 12);
+}
+
+float aliquota(float s)
+{
+    if (s < 2259.21)
+    {
+     return 0.0;
+    }
+    else if (s <= 2826.65)
+    {
+        return 7.5;        
+    }
+    else if (s <= 3751.05)
+    {
+        return 15.0;
+    }
+    else if (s <= 4664.68)
+    {
+        return 22.5;
+    }
+   else
+    {
+        return 27.5;
+    }
+}
+
+float parcela(float n)
+{
+    float x;
+
+    if (n < 2259.21)
+    {
+        x = 0;
+        return x;
+    }
+    else if (n <= 2826.65)
+    {
+        x = 169.44;
+        return x;        
+    }
+    else if (n <= 3751.05)
+    {
+        x = 381.44;
+        return x;
+    }
+    else if (n <= 4664.68)
+    {
+        x = 662.77;
+        return x;
+    }
+    else
+    {
+        x = 896.00;
+        return x;
+    }
+}
+
+float imposto(float a, float b, float c)
+{
+    float r = a * (b / 100) - c;
+
+    return r;
+}
+
+PARTE 3
+
+Exercício 2:
+
+#include <stdio.h>
+
+int dias(int a);
+
+int main()
+{
+    int ano;
+
+    printf("Escolha um ano: ");
+    scanf("%d", &ano);
+
+    printf("Esse ano tem %d dias\n", dias(ano));
+}
+
+int dias(int a)
+{
+    if(a % 4 == 0)
+    {
+        if(a >= 400 && a % 400 == 0)
+        {
+            return 366;
+        }
+        else if(a < 400 && a % 100 == 0)
+        {
+            return 365;
+        }
+        else if (a > 400 && a % 100 == 0)
+        {
+            return 365;
+        }
+        else
+        {
+            return 366;
+        }
+    }
+    else
+    {
+        return 365;
+    }
+}

@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+  int main()
+  {
+      char val1;
+      char val2;
+      char media;
+      char d1;
+      char d2;
+      char d3;
+
+      val1 = 210;
+      val2 = 220;
+
+      media = (val1 + val2) / 2;
+
+      d1 = media / 100;
+      d2 = media % 10;
+      d3 = media / 10 - (media /100) * 10;
+
+      putchar(d1 + 48);
+      putchar(d3 + 48);
+      putchar(d2 + 48);
+  }

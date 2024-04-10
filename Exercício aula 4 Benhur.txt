@@ -1,0 +1,182 @@
+Exercício 1:
+
+#include <stdio.h>
+
+void imprime_numero(float n);
+float graus_para_radianos(float g);
+
+
+int main()
+{
+    imprime_numero(graus_para_radianos(180));
+}
+
+float graus_para_radianos(float g)
+{
+    float pi;
+    float R;
+    
+    pi = 3.1415;
+    R = (g / 180) * pi;
+
+    return R;
+}
+
+void imprime_numero(float n)
+{
+  char d1;
+  char d2;
+  char d3;
+  char d4;
+  char d5;
+  int aux;
+  
+  aux = n / 1000;
+  d1 = aux % 10 + 48;
+  aux = n / 100;
+  d2 = aux % 10 + 48;
+  aux = n / 10;
+  d3 = aux % 10 + 48;
+  aux = n / 1;
+  d4 = aux % 10 + 48;
+  aux = n * 10;
+  d5 = aux % 10 + 48;
+
+  putchar(d1);
+  putchar(d2);
+  putchar(d3);
+  putchar(d4);
+  putchar(44);
+  putchar(d5);
+  putchar(10);
+}
+
+
+Exercício 2:
+
+#include <stdio.h>
+
+
+float temperatura(float c);
+
+
+int main()
+{
+printf("Temperatura: %3.2f°F\n", temperatura(37.85));
+}
+
+
+float temperatura(float c)
+{
+float R;
+R = 32 + 1.8 * c;
+
+return R;
+}
+
+Exercício 2 - melhorado:
+
+#include <stdio.h>
+
+float t;
+
+float temperatura(float c);
+
+int main()
+{
+
+    printf("Qual é a sua temperatura?\n");
+    scanf("%f", &t);
+
+    if(t > 37.8)
+    {
+        printf("Temperatura: %3.2f°F\n", temperatura(t));
+        printf("Nossa, você está com febre!\n");
+        return 0;
+    }
+    else if(t >= 37.3)
+    {
+        printf("Temperatura: %3.2f°F\n", temperatura(t));
+        printf("Nossa, você está com febrícula!\n");
+        return 0;
+    }
+    else if(t <= 35)
+    {
+        printf("Temperatura: %3.2f°F\n", temperatura(t));
+        printf("Está muito baixa, é hipotermia!\n");
+        return 0;
+    }
+    else
+    {
+        printf("Temperatura: %3.2f°F\n", temperatura(t));
+        printf("Sua temperatura está normal!\n");
+        return 0;
+    }
+  
+}
+
+float temperatura(float c)
+{
+    float R;
+    R = 32 + 1.8 * c;
+    
+    return R;
+}
+
+Exercício 3:
+
+#include <stdio.h>
+
+void imp_1d(int n);
+void imp_2d(int n);
+void imp_3d(int n);
+void imp_4d(int n);
+void imp_5d(int n);
+
+
+int main()
+{
+    imp_1d(27945);
+    printf("\n");
+
+    imp_2d(27945);
+    printf("\n");
+
+    imp_3d(27945);
+    printf("\n");
+
+    imp_4d(27945);
+    printf("\n");
+
+    imp_5d(27945);
+    printf("\n");
+}
+
+void imp_1d(int n)
+{
+    printf("%i", n % 10);
+}
+
+void imp_2d(int n)
+{
+  imp_1d(n / 10);
+  imp_1d(n);
+}
+
+void imp_3d(int n)
+{
+  imp_1d(n / 100);
+  imp_2d(n);
+}
+
+void imp_4d(int n)
+{
+  imp_1d(n / 1000);
+  imp_3d(n);
+}
+
+void imp_5d(int n)
+{
+  imp_1d(n / 10000);
+  imp_4d(n);
+}

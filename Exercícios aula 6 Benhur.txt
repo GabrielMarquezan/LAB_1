@@ -1,0 +1,115 @@
+Exercício 1:
+
+#include <stdio.h>
+
+int main()
+{
+float h;
+float w;
+float imc;
+
+printf("Digite sua altura em metros: ");
+scanf("%f", &h);
+
+printf("DIgite seu peso em kg: ");
+scanf("%f", &w);
+
+imc = w / (h * h);
+
+if(imc < 18.5)
+{
+printf("Seu IMC é: %.2f\nBaixo demais.\n", imc );
+}
+else if(imc < 25)
+{
+printf("Seu IMC é: %.2f\nNormal.\n", imc );
+}
+else if(imc < 30)
+{
+printf("Seu IMC é: %.2f\nSobrepeso.\n", imc );
+}
+else if(imc < 35)
+{
+printf("Seu IMC é: %.2f\nObesidade Grau I.\n", imc );
+}
+else if(imc < 40)
+{
+printf("Seu IMC é: %.2f\nObesidade Grau II.\n", imc );
+}
+else
+{
+printf("Seu IMC é: %.2f\nObesidade Grau III.\n", imc);
+}
+}
+
+Exercício 2:
+
+#include <stdio.h>
+
+int main()
+{
+    int c;
+    int p;
+    int a;
+    int d;
+    int custo;
+    int real;
+    int cent;
+    
+    p = 549;
+    
+    printf("Qual é a capacidade do tanque de combustível do seu veículo (litros)?\n");
+    scanf("%i", &c);
+    
+    printf("Qual é a autonomia do seu veículo (quilometros)?\n");
+    scanf("%i", &a);
+    
+    printf("Quantos quilometros você deseja percorrer?\n");
+    scanf("%i", &d);
+    
+    custo = p * (d * 100 / a);
+    
+    real = custo / 10000;
+    cent = custo / 100 % 100;
+    
+    printf("Sua viagem custará %i reais e %i centavos\n", real, cent);
+}
+
+Exercício 3:
+
+#include <stdio.h>
+#include <math.h>
+
+float heron(float a, float b, float c);
+
+int main()
+{
+    float L1;
+    float L2;
+    float L3;
+    
+    printf("Quais são as medidas dos lados do triângulo (metros)?\n\n");
+    
+    printf("Lado 1: ");
+    scanf("%f", &L1);
+    
+    printf("Lado 2: ");
+    scanf("%f", &L2);
+    
+    printf("Lado 3: ");
+    scanf("%f", &L3);
+    
+    printf("Área do triângulo: %.2fm²\n", heron(L1, L2, L3));
+}
+
+float heron(float a, float b, float c)
+{
+     float p;
+     float R;
+     
+     p = (a + b + c) / 2;
+     
+     R = sqrt(p * (p - a) * (p - b) * (p - c));
+     
+     return R;
+}

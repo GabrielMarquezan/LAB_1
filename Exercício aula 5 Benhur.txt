@@ -1,0 +1,29 @@
+Exercício 1:
+
+#include <stdio.h>
+
+int main()
+{
+    printf(" /\\_/\\\n= o.o =\n > ^ <\n");
+}
+
+Exercício 2:
+
+#include <stdio.h>
+
+int main()
+{
+    float n = 5.1;
+
+    printf("%.0f\n", n);
+    printf("%.1f\n", n);
+    printf("%.2f\n", n);
+    printf("%.3f\n", n);
+    printf("%.4f\n", n);
+    printf("%.5f\n", n);
+    printf("%.6f\n", n);
+    printf("%.7f\n", n);
+    printf("%.8f\n", n);
+    printf("%.9f\n", n);
+    printf("%.10f\n", n);
+}
