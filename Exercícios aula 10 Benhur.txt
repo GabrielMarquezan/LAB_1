@@ -1,0 +1,275 @@
+Exercício 1:
+
+A)
+	0 0
+	1 2
+	2 4
+	3 6
+	4 8
+B)
+	1
+	2
+	3
+	4
+C)
+	1
+	2
+	3
+	4
+	5
+D)
+	1
+	2
+	3
+	4
+	5
+E)
+	
+F)
+	5
+	4
+	3
+	2
+	1
+G) 
+	5
+	5
+	5
+	5
+	5
+
+H) Tive que rodar essa no computador, achei que iria escrever do 4 pra baixo
+	5
+	4
+	3
+	2
+	1
+
+I) 
+	5
+	4
+	3
+	2
+	1
+
+J) 
+	4
+	4
+	4
+	4
+	4
+K)
+	5
+	4
+	3
+	2
+	1
+L)
+	5
+	5
+	5
+	5
+	5
+M)
+	0
+	3 2 1 0
+	1
+	4 3 2 1
+	2
+	5 4 3 2
+N)
+	 1 2
+	 1 3
+	 2 3
+
+O) Tive que usar o computador pra entender, mas entendi
+	ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+P)
+	ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+Q)
+	65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 
+
+R)
+	65 A  66 B  67 C  68 D  69 E  70 F  71 G  72 H  73 I  74 J  75 K  76 L  77 M  78 N  79 O  80 P  81 Q  82 R  83 S  84 T  85 U  86 V  87 W  88 X  89 Y  90 Z 
+S)
+	 32 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47
+	 48 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63
+etc...
+
+Exercício 2:
+
+#include <stdio.h>
+
+int main()
+{
+    for (char i = 1; i <= 15; i++)
+    {
+        printf("%d\n", i);
+    }
+}
+
+Exercício 3:
+
+#include <stdio.h>
+
+int main()
+{
+    for (char i = 0; i < 3; i++)
+    {
+        for(int j = 1; j <= 5; j++)
+        {
+            printf("%d ", j + i * 5);
+        }
+        
+        printf("\n");
+    }
+}
+
+Exercício 4: 
+
+#include <stdio.h>
+
+int quadrado(int numero);
+
+int main()
+{
+    for (char i = 0; i < 3; i++)
+    {
+        for(int j = 1; j <= 5; j++)
+        {
+            int num = j + i * 5;
+            printf("%d %d ", num, quadrado(num));
+        }
+        
+        printf("\n");
+    }
+}
+
+int quadrado(int numero)
+{
+    return numero * numero;
+}
+
+Exercício 5:
+
+#include <stdio.h>
+
+int main()
+{
+    for(int i = 1; i <= 100; i++)
+    {
+        printf("%d", i);
+
+        if(i % 2 == 0)
+        {
+            printf("*");
+        }
+        
+        if(i % 3 == 0)
+        {
+            printf("@");
+        }
+        
+        if(i % 5 == 0)
+        {
+            printf("#");
+        }
+        
+        if(i % 7 == 0)
+        {
+            printf("$");
+        }
+
+        printf(" ");
+    }
+
+    printf("\n");
+}
+
+Exercício 6:
+
+#include <stdio.h>
+
+int quadrado(int numero);
+void imprime_char(int numero, char c);
+
+int main()
+{
+    for(int i = 1; i <= 8; i++)
+    {
+        imprime_char(quadrado(i), ' ');
+        printf("%d\n", i);
+    }
+}
+
+int quadrado(int numero)
+{
+    return numero * numero;
+}
+
+void imprime_char(int numero, char c)
+{
+    for(int i = 0; i < numero; i++)
+    {
+        putchar(c);
+    }
+}
+
+Exercício 7:
+
+#include <stdio.h>
+
+int main()
+{
+    for(int i = 01; i < 100; i++)
+    {
+        if(i < 10)
+        {
+            printf("0%d0%d ", i, i);
+        }
+        else
+        {
+            printf("%2d%2d ", i, i);
+        }
+    }
+
+    printf("\n");
+}
+
+Exercício 8:
+
+#include <stdio.h>
+
+int quadrado(int n);
+
+int main()
+{
+    for(int i = 1; i < 10000; i++)
+    {
+        if(i < 1000)
+        {
+            int numero = quadrado(i / 10) + quadrado(i % 10);
+
+            if(numero == i)
+            {
+                printf("%d\n", i);
+            }
+        }
+        else
+        {
+            int numero = quadrado(i / 100) + quadrado(i % 100);
+
+            if(numero == i)
+            {
+                printf("%d\n", i);
+            }
+        }
+    }
+}
+
+int quadrado(int n)
+{
+    return n * n;
+}
