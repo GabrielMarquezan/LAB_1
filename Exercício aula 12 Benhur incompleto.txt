@@ -198,7 +198,55 @@ int main()
 
 Exercício 5:
 
+#include <stdio.h>
 
+float distancia(float numero, float media);
+
+int main()
+{
+    float vetor[10];
+    float dist[10];
+    float media;
+    float total = 0;
+    float menor = 2140000000000;
+    float menordeverdade;
+
+    for(int i = 0; i < 10; i++)
+    {
+        printf("Digite um número: ");
+        scanf("%f", &vetor[i]);
+
+        total += vetor[i];
+    }
+
+    media = total / 10;
+
+    for(int i = 0; i < 10; i++)
+    {
+        dist[i] = distancia(vetor[i], media);
+
+        if(dist[i] < menor)
+        {
+            menor = dist[i];
+            menordeverdade = vetor[i];
+        }
+    }
+
+    printf("A média é %.2f\n", media);
+    printf("O número mais próximo da média é %.2f\n", menordeverdade);
+}
+
+float distancia(float numero, float media)
+{
+    float dist = numero - media;
+
+    if(dist < 0)
+    {
+        dist = -dist;
+    }
+
+    return dist;
+}
 
 Exercício 6:
 
@@ -361,4 +409,117 @@ int main()
     
     printf("o menor número é: %d\n", menor); 
     printf("o maior número é: %d\n", maior); 
+}
+
+Exercício 9: 
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+    int vetor[100];
+    int maior = 0;
+    int menor = 2147483647;
+    int posicao1;
+    int posicao2;
+    
+    for(int i = 0; i < 100; i++)
+    {
+        vetor[i] = rand();
+        
+        if(vetor[i] > maior)
+        {
+            maior = vetor[i];
+            posicao1 = i;
+        }
+        
+        if(vetor[i] < menor)
+        {
+            menor = vetor[i];
+            posicao2 = i;
+        }
+    }
+    
+    printf("o menor número é %d. Ele está na posição %d\n\n", menor, posicao2); 
+    printf("o maior número é %d. Ele está na posição %d\n", maior, posicao1);
+}
+
+EXercício 10:
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+    int vetor[100];
+    int maior = 0;
+    int menor = 2147483647;
+    int posicao1;
+    int posicao2;
+    int contador[2];
+    
+    for(int i = 0; i < 100; i++)
+    {
+        vetor[i] = rand();
+        
+        if(vetor[i] > maior)
+        {
+            maior = vetor[i];
+            posicao1 = i;
+        }
+        
+        if(vetor[i] < menor)
+        {
+            menor = vetor[i];
+            posicao2 = i;
+        }
+    }
+    
+    for(int j = 0; j < 100; j++)
+    {
+         if(menor == vetor[j])
+         {
+             contador[0]++;
+         }
+            
+         if(maior == vetor[j])
+         {
+             contador[1]++;
+         }
+    }
+
+    printf("o menor número é %d. Ele está na posição %d e apareceu %d vez(es)\n\n", menor, posicao2, contador[0]); 
+    printf("o maior número é %d. Ele está na posição %d e apareceu %d vez(es)\n", maior, posicao1, contador[1]);
+}
+
+Exercício 11: 
+
+#include <stdlib.h>
+#include <stdio.h>
+
+int main()
+{
+    int vetor[100];
+    int contador[100];
+    
+    for(int i = 0; i < 100; i++)
+    {
+        vetor[i] = rand();
+        printf("%d\n", vetor[i]);
+        contador[i] = 0;
+    }
+    
+    for(int i = 0; i < 100; i++)
+    {
+        for(int j = 0; j < 100; j++)
+        {
+            if(vetor[i] == vetor[j])
+            {
+                contador[i]++;
+            }
+        }
+
+        printf("O número %d apareceu %d vezes\n", vetor[i], contador[i]);
+    }
 }
