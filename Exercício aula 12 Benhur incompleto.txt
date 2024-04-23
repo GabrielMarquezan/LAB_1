@@ -1,0 +1,200 @@
+Exercício 1:
+
+#include <stdio.h>
+
+int main()
+{
+   float numeros[10];
+   
+   for(int i = 0; i < 10; i++)
+   {
+       printf("Digite um número: ");
+       scanf("%f", &numeros[i]);
+   }
+   
+   printf("\n");
+
+   for(int i = 9; i >= 0; i--)
+   {
+       printf("%.1f\n", numeros[i]);
+   }   
+}
+
+Exercício 2:
+
+#include <stdio.h>
+
+int main()
+{
+   int vetor1[5], vetor2[5], vetor3[10];
+   
+   for(int i = 0; i < 5; i++)
+   {
+       printf("Digite um número: ");
+       scanf("%d", &vetor1[i]);
+       
+       if(i == 4)
+       {
+           printf("\n");
+           
+           for(int i = 0; i < 5; i++)
+           {
+               printf("Posição %d do vetor 1: %d\n", i, vetor1[i]);
+           }
+           
+           printf("\n");
+       }
+   }
+
+   for(int i = 0; i < 5; i++)
+   {
+       printf("Digite um número: ");
+       scanf("%d", &vetor2[i]);
+       
+       if(i == 4)
+       {
+           printf("\n");
+           
+           for(int i = 0; i < 5; i++)
+           {
+               printf("Posição %d do vetor 2: %d\n", i, vetor2[i]);
+           }
+       
+           printf("\n");
+       }
+   }
+   
+   for(int i = 0; i < 5; i++)
+   {
+       vetor3[i] = vetor1[i];
+       vetor3[i + 5] = vetor2[i];
+       
+       if(i == 4)
+       {
+          for(int i = 0; i < 10; i++)
+          {
+              printf("Posição %d do vetor 3: %d\n", i, vetor3[i]);
+          }
+       }
+   }
+}  
+
+Exercício 3:
+
+#include <stdio.h>
+
+int main()
+{
+   int vetor1[5], vetor2[5], vetor3[10], aux = 0;
+   
+   for(int i = 0; i < 5; i++)
+   {
+       printf("Digite um número: ");
+       scanf("%d", &vetor1[i]);
+       
+        if(i == 4)
+        {
+           printf("\n");
+           
+           for(int i = 0; i < 5; i++)
+            {
+                printf("Posição %d do vetor 1: %d\n", i, vetor1[i]);
+            }
+           
+            printf("\n");
+        }
+   }
+
+    for(int i = 0; i < 5; i++)
+    {
+        printf("Digite um número: ");
+        scanf("%d", &vetor2[i]);
+       
+        if(i == 4)
+        {
+            printf("\n");
+           
+            for(int i = 0; i < 5; i++)
+            {
+                printf("Posição %d do vetor 2: %d\n", i, vetor2[i]);
+            }
+       
+            printf("\n");
+        }
+    }
+   
+    for(int i = 0; i < 10; i += 2)
+    {
+        vetor3[i] = vetor1[i/2];
+    }
+    for(int i = 1; i < 10; i+= 2)
+    {
+        vetor3[i] = vetor2[i/2];
+    }
+    for(int i = 0; i < 10; i++)
+    {
+        printf("Posição %d do vetor 3: %d\n", i, vetor3[i]);
+    }
+}  
+
+Exercício 4:
+
+#include <stdio.h>
+
+int main()
+{
+   int vetor1[5], vetor2[5], vetor3[10], aux = 0;
+   
+   for(int i = 0; i < 5; i++)
+   {
+       printf("Digite um número: ");
+       scanf("%d", &vetor1[i]);
+       
+        if(i == 4)
+        {
+           printf("\n");
+           
+           for(int i = 0; i < 5; i++)
+            {
+                printf("Posição %d do vetor 1: %d\n", i, vetor1[i]);
+            }
+           
+            printf("\n");
+        }
+   }
+
+    for(int i = 0; i < 5; i++)
+    {
+        printf("Digite um número: ");
+        scanf("%d", &vetor2[i]);
+       
+        if(i == 4)
+        {
+            printf("\n");
+           
+            for(int i = 0; i < 5; i++)
+            {
+                printf("Posição %d do vetor 2: %d\n", i, vetor2[i]);
+            }
+       
+            printf("\n");
+        }
+    }
+   
+    for(int i = 0; i < 10; i += 2)
+    {
+        vetor3[i] = vetor1[i/2];
+    }
+    for(int i = 9; i > 0; i -= 2)
+    {
+        vetor3[i] = vetor2[aux];
+        aux++;
+    }
+    for(int i = 0; i < 10; i++)
+    {
+        printf("Posição %d do vetor 3: %d\n", i, vetor3[i]);
+    }
+}  
+
+Exercício 5:
+
