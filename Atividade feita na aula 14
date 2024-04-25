@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+void copia_str(char origem[], char destino[]);
+
+int main()
+{
+    char s[] = "teste";
+    char t[] = "abacate bombadão";
+    copia_str(s, t);
+
+    printf("A string S tem o valor %s\n", s);
+    printf("A string T tem o valor %s\n", t);
+}
+
+void copia_str(char origem[], char destino[])
+{
+    int index = 0;
+    int tamanho = 0;
+
+    while(destino[index] != '\0')
+    {
+        tamanho++;
+        index++;
+    }
+
+    for(int i = 0; i <= tamanho; i++)
+    {
+        destino[i] = origem[i];
+    }
+}
