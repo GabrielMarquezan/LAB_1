@@ -114,3 +114,65 @@ int pos_menor(int tamanho, int vetor[], int elemento)
         }
     }
 }
+
+Exercício 4 incompleto:
+
+#include <stdio.h>
+
+void ordem(int tamanho, int vetor[]);
+int pos_menor(int tamanho, int vetor[], int elemento);
+void troca(int vetor[], int index1, int index2);
+
+int main()
+{
+    int vetor[10] = {1, 0, 4, 7, 3, 8, 9, 2, 5, 6};
+    ordem(10, vetor);
+
+    for(int i = 0; i < 10; i++)
+    {
+        printf("%d\n", vetor[i]);
+    }
+
+}
+
+void ordem(int tamanho, int vetor[])
+{
+    for(int i = 0; i < tamanho; i++)
+    {
+        int indexmenor = pos_menor(tamanho, vetor, vetor[i]);
+        troca(vetor, i, indexmenor);
+    }
+}
+
+int pos_menor(int tamanho, int vetor[], int elemento)
+{
+    for(int i = 0; i < tamanho; i++)
+    {
+        if(vetor[i] == elemento)
+        {
+            int menor = elemento;
+            int index;
+            
+            for(int j = i; j < tamanho; j++)
+            {
+                if(vetor[j] < menor)
+                {
+                    menor = vetor[j];
+                    index = j;
+                }
+            }
+            
+            return index;
+        }
+    }
+}
+
+void troca(int vetor[], int index1, int index2)
+{
+    if(index1 != index2)
+    {
+        int aux = vetor[index1];
+        vetor[index1] = vetor[index2];
+        vetor[index2] = aux;
+    }
+}
