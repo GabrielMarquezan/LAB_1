@@ -1,0 +1,116 @@
+Exercício 1:
+
+#include<stdio.h>
+
+void le_vet(int tamanho, int vetor[]);
+void inverte_vet(int tamanho, int vetor[]);
+void imprime_vet(int tamanho, int vetor[]);
+
+int main()
+{
+    int d[10];
+    le_vet(10, d);
+    inverte_vet(10, d);
+    imprime_vet(10, d);
+    return 0;
+}
+
+void le_vet(int tamanho, int vetor[])
+{
+    for(int i = 0; i < tamanho; i++)
+    {
+        printf("Digite um número: ");
+        scanf("%d", &vetor[i]);
+    }
+}
+
+void inverte_vet(int tamanho, int vetor[])
+{
+    int aux;
+    
+    for(int i = 0; i < tamanho / 2; i++)
+    {
+        aux = vetor[i];
+        vetor[i] = vetor[tamanho - i - 1];
+        vetor[tamanho - i - 1] = aux;
+    }
+}
+
+void imprime_vet(int tamanho, int vetor[])
+{
+    for(int i = 0; i < tamanho; i++)
+    {
+        printf("%d", vetor[i]);
+    }
+}
+
+Exercício 2:
+
+#include<stdio.h>
+
+void troca(int vetor[], int index1, int index2);
+void imprime_vet(int tamanho, int vetor[]);
+
+int main()
+{
+    int d[7] = {1, 3, 5, 7, 9, 0, 12};
+    imprime_vet(7, d);
+    troca(d, 0, 4);
+    imprime_vet(7, d);
+    return 0;
+}
+
+void troca(int vetor[], int index1, int index2)
+{
+    if(index1 != index2)
+    {
+        int aux = vetor[index1];
+        vetor[index1] = vetor[index2];
+        vetor[index2] = aux;
+    }
+}
+
+void imprime_vet(int tamanho, int vetor[])
+{
+    for(int i = 0; i < tamanho; i++)
+    {
+        printf("%d\n", vetor[i]);
+    }
+}
+
+Exercício 3:
+
+#include <stdio.h>
+
+int pos_menor(int tamanho, int vetor[], int elemento);
+
+int main()
+{
+    int d[7] = {1, 3, 5, 7, 9, 0, 12};
+    int retorno = pos_menor(7, d, 3);
+    printf("%d", retorno);
+    return 0;
+}
+
+int pos_menor(int tamanho, int vetor[], int elemento)
+{
+    for(int i = 0; i < tamanho; i++)
+    {
+        if(vetor[i] == elemento)
+        {
+            int menor = elemento;
+            int index;
+            
+            for(int j = i; j < tamanho; j++)
+            {
+                if(vetor[j] < menor)
+                {
+                    menor = vetor[j];
+                    index = j;
+                }
+            }
+            
+            return index;
+        }
+    }
+}
