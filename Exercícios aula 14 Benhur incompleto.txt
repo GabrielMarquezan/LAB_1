@@ -1,0 +1,173 @@
+Exercício 1.1:
+
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+int tamanho_str(char string[]);
+void copia_str(char destino[], char origem[]);
+void junta_str(char primeira[], char segunda[]);
+
+int main()
+{
+    //Strings usadas nas funções criadas:
+
+    char string1[5] = "Aba";
+    char string2[] = "cate";
+    char string3[10] = "Aba";
+    char string4[] = "caxi";
+
+    //Strings usadas nas funções da string.h:
+
+    char string5[5] = "Aba";
+    char string6[] = "cate";
+    char string7[10] = "Aba";
+    char string8[] = "caxi";
+
+    //Funções criadas:
+
+    printf("%d\n", tamanho_str(string1));
+    printf("%d\n", tamanho_str(string2));
+
+    copia_str(string1, string2);
+    printf("%s\n", string1);
+
+    junta_str(string3, string4);
+    printf("%s\n", string3);
+
+    //Funções da string.h:
+
+    printf("%ld\n", strlen(string5));
+    printf("%ld\n", strlen(string6));
+
+    copia_str(string5, string6);
+    printf("%s\n", string5);
+
+    junta_str(string7, string8);
+    printf("%s\n", string7);
+}
+
+//Criar strlen
+
+int tamanho_str(char string[])
+{
+    int tamanho = 0;
+
+    while(string[tamanho] != '\0')
+    {
+        tamanho++;
+    }
+
+    return tamanho;
+}
+
+//Criar strcpy
+
+void copia_str(char destino[], char origem[])
+{
+    int tamanho = 0;
+
+    while(destino[tamanho] != '\0')
+    {
+        tamanho++;
+    }
+
+    for(int i = 0; i <= tamanho; i++)
+    {
+        if(destino[i] == '\0')
+        {
+            destino[i + 1] = '\0';
+        }
+
+        destino[i] = origem[i];
+    }
+}
+
+//Criar strcat
+
+void junta_str(char primeira[], char segunda[])
+{
+    int index1 = 0;
+    int index2 = 0;
+
+    while(true)
+    {
+        if(primeira[index1] == '\0')
+        {
+            while(true)
+            {
+                primeira[index1] = segunda[index2];
+
+                if(segunda[index2] == '\0')
+                {
+                    break;
+                }
+
+                index1++;
+                index2++;
+            }
+
+            break;
+        }
+
+        index1++;
+    }
+}
+
+Exercício 1.2:
+
+#include <stdio.h>
+#include <stdbool.h>
+
+bool palindromo(char string[]);
+
+int main()
+{
+    char string[] = "AS SATAS SA";
+    char string2[] = "AS SATAS A";
+
+    if(palindromo(string))
+    {
+        printf("Isso é um palíndromo\n");
+    }
+    else
+    {
+        printf("Isso não é um palíndromo\n");
+    }
+
+    if(palindromo(string2))
+    {
+        printf("Isso é um palíndromo\n");
+    }
+    else
+    {
+        printf("Isso não é um palíndromo\n");
+    }
+}
+
+bool palindromo(char string[])
+{
+    int tamanho = 0;
+    bool resultado = true;
+
+    while(string[tamanho] != '\0')
+    {
+        tamanho++;
+    }
+    
+    int aux = tamanho - 1;
+
+    for(int i = 0; i < tamanho / 2; i++)
+    {
+        if(string[i] != string[aux])
+        {
+            resultado = false;
+        }
+
+        aux--;
+    }
+
+    return resultado;
+}
+
+Exercício 2: 
