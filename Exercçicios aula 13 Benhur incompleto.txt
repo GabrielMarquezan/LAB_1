@@ -99,9 +99,9 @@ int pos_menor(int tamanho, int vetor[], int elemento)
         if(vetor[i] == elemento)
         {
             int menor = elemento;
-            int index;
+            int index = i;
             
-            for(int j = i; j < tamanho; j++)
+            for(int j = i + 1; j < tamanho; j++)
             {
                 if(vetor[j] < menor)
                 {
@@ -115,7 +115,7 @@ int pos_menor(int tamanho, int vetor[], int elemento)
     }
 }
 
-Exercício 4 incompleto:
+Exercício 4:
 
 #include <stdio.h>
 
@@ -151,9 +151,9 @@ int pos_menor(int tamanho, int vetor[], int elemento)
         if(vetor[i] == elemento)
         {
             int menor = elemento;
-            int index;
+            int index = i;
             
-            for(int j = i; j < tamanho; j++)
+            for(int j = i + 1; j < tamanho; j++)
             {
                 if(vetor[j] < menor)
                 {
