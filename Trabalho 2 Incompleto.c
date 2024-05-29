@@ -2,270 +2,102 @@
 #include <stdbool.h>
 #include "tela.h"
 #include "tecla.h"
-
-char ganhador(char matriz[3][3]);
-bool verifica(char vetor[3]);
-char linhas(char matriz[3][3]);
-char colunas(char matriz[3][3]);
-char diagonais(char matriz[3][3]);
-void desenha_jogo(char matriz[3][3]);
-void resultado_jogo(char matriz[3][3]);
+#include "jogodavelha.h"
 
 int main()
 {
     char jogo[3][3] = {{' ', ' ', ' '}, {' ', ' ', ' '}, {' ', ' ', ' '}};
-    char jogador, acao;
-    int linha = 0, coluna = 0, posicaoy = 0, posicaox = 0;
-
+    char jogador, acao, vencedor;
+    int linha = 0, coluna = 0, eixox = 56, eixoy = 12;
+    
+    
     tela_ini();
-    tela_mostra_cursor(true);
     tecla_ini();
+    tela_cor_fundo(0,0,0);
+    tela_limpa();
+    
+    tela_atualiza();
 
-    for(int i = 0; i < 10; i++)
+    while(true)
     {
-        tela_limpa();
-        tela_atualiza();
-        desenha_jogo(jogo);
-        tela_atualiza();
 
-        if(i % 2 == 0)
+        //Laço que executa a partida
+        for(int i = 0; i < 10; i++)
         {
-            jogador = 'O';
-        }
-        else
-        {
-            jogador = 'X';
-        }
-        
-        while(true)
-        {
-            acao = tecla_le_char();
-        
-            switch(acao)
+            //define o jogador da vez
+            if(i % 2 == 0)
             {
-                case '\n':
-                if(jogo[linha][coluna] == ' ')
-                {
-                    jogo[linha][coluna] = jogador;
-                }
-                break;
-
-                case 'w':
-                if(linha != 0)
-                {
-                    linha--;
-                    tela_lincol(linha, coluna);
-                }
-                break;
-
-                case 'W':
-                if(linha != 0)
-                {
-                    linha--;
-                    tela_lincol(linha, coluna);
-                }
-                break;
-
-                case 's':
-                if(linha != 2)
-                {
-                    linha++;
-                    tela_lincol(linha, coluna);
-                }
-                break;
-
-                case 'S':
-                if(linha !=2)
-                {
-                    linha++;
-                    tela_lincol(linha, coluna);
-                }
-                break;
-
-                case 'a':
-                if(coluna != 0)
-                {
-                    coluna--;
-                    tela_lincol(linha, coluna);
-                }
-                break;
-
-                case 'A':
-                if(coluna != 0)
-                {
-                    coluna--;
-                    tela_lincol(linha, coluna);
-                }
-                break;
-
-                case 'd':
-                if(coluna != 2)
-                {
-                    coluna++;
-                    tela_lincol(linha, coluna);
-                }
-                break;
-
-                case 'D':
-                if(coluna != 2)
-                {
-                    coluna++;
-                    tela_lincol(linha, coluna);
-                }
-                break;
+                jogador = 'X';
+            }
+            else
+            {
+                jogador = 'O';
             }
 
+            vencedor = ganhador(jogo);
+            printf("%c", vencedor);
 
-            if(acao == '\n')
+            desenha_jogo(jogo);
+            tela_lincol(eixoy, eixox);
+            tela_atualiza();
+
+            while(true)
             {
-                break;
+                //Laço que recebe e responde a movimentação o jogador
+
+                tela_lincol(eixox, eixoy);
+                acao = tecla_le_char();
+                
+
+                
+                if(acao == '\n')
+                {
+                    if(jogo[linha][coluna] == ' ')
+                    {
+                        jogo[linha][coluna] = jogador;
+                        break;
+                    }
+                    else
+                    {
+                        tela_lincol(19, 47);
+                        printf("Essa casa já está preenchida!\n");
+                        tela_lincol(20, 55);
+                        printf("Tente outra.");
+                    }
+                }
+                else if((acao == 'w' || acao == 'W') && linha != 0)
+                {
+                    linha--;
+                    eixoy -= 2;
+                }
+                else if((acao == 's' || acao == 'S') && linha != 2)
+                {
+                    linha++;
+                    eixoy += 2;
+                }
+                else if((acao == 'a' || acao == 'A') && coluna != 0)
+                {
+                    coluna--;
+                    eixox -= 4;
+                }
+                else if((acao == 'd' || acao == 'D') && coluna != 2)
+                {
+                    coluna++;
+                    eixox += 4;
+                }
+
+                desenha_jogo(jogo);
+                tela_lincol(eixoy, eixox);
+                tela_atualiza();
             }
+
+            tela_limpa();
         }
+        break;
     }
 
-    printf("Vencedor; %c", ganhador(jogo));
+
 
     tecla_fim();
     tela_fim();
-}
-
-
-void resultado_jogo(char matriz[3][3])
-{
-    char vencedor = ganhador(matriz);
-    desenha_jogo(matriz);
-    
-    if(vencedor != ' ' && vencedor != 'E')
-    {
-        printf("Vencedor: %c\n", ganhador(matriz));
-    }
-    else if(vencedor == ' ')
-    {
-        printf("Jogo incompleto\n");
-    }
-    else
-    {
-        printf("Houve empate\n");
-    }
-}
-
-char ganhador(char matriz[3][3])
-{
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            if(matriz[i][j] == ' ')
-            {
-                return ' ';
-            }
-        }
-    }
-    
-    char vitorioso[3] = {linhas(matriz), colunas(matriz), diagonais(matriz)};
-
-    for(int i = 0; i < 3; i++)
-    {
-        if(vitorioso[i] != ' ')
-        {
-            return vitorioso[i];
-        }
-    }
-
-    return 'E';
-}
-
-bool verifica(char vetor[3])
-{
-    if(vetor[0] == vetor[1] && vetor[0] == vetor[2])
-    {
-        return true;
-    }
-    
-    return false;
-}
-
-char linhas(char matriz[3][3])
-{
-    char aux[3];
-
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            aux[j] = matriz[i][j];
-        }
-
-        if(verifica(aux))
-        {
-            return aux[0];
-        }
-    }
-    return ' ';
-}
-
-char colunas(char matriz[3][3])
-{
-    char aux[3];
-
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            aux[j] = matriz[j][i];
-        }
-
-        if(verifica(aux))
-        {
-            return aux[0];
-        }
-    }
-    return ' ';
-}
-
-char diagonais(char matriz[3][3])
-{
-    char aux[3];
-    int j = 0;
-
-    for(int i = 0; i < 3; i++)
-    {
-        aux[i] = matriz[i][i];
-        
-        if(verifica(aux))
-        {
-            return aux[0];
-        }
-    }
-
-    for(int i = 2; i >= 0; i--)
-    {
-        aux[i] = matriz[j][i];
-
-        if(verifica(aux))
-        {
-            return aux[0];
-        }
-
-        j++;
-    }
-
-    return ' ';
-}
-
-void desenha_jogo(char matriz[3][3])
-{
-    printf("—————————————\n");
-
-    for(int i = 0; i < 3; i++)
-    {
-        for(int j = 0; j < 3; j++)
-        {
-            printf("| %c ", matriz[i][j]);
-        }
-
-        printf("|\n");
-        printf("—————————————\n");
-    }
-    printf("\n");
 }
