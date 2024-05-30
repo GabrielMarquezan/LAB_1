@@ -24,6 +24,9 @@ char ganhador(char matriz[3][3])
 {
     char vitorioso[3] = {linhas(matriz), colunas(matriz), diagonais(matriz)};
 
+    printf("%c\n", vitorioso[0]);
+    printf("%c\n", vitorioso[1]);
+    printf("%c\n", vitorioso[2]);
     for(int i = 0; i < 3; i++)
     {
         if(vitorioso[i] != ' ')
@@ -35,79 +38,41 @@ char ganhador(char matriz[3][3])
     return 'E';
 }
 
-bool verifica(char vetor[3])
-{
-    if(vetor[0] == vetor[1] && vetor[0] == vetor[2])
-    {
-        return true;
-    }
-    
-    return false;
-}
-
 char linhas(char matriz[3][3])
 {
-    char aux[3];
-
     for(int i = 0; i < 3; i++)
     {
-        for(int j = 0; j < 3; j++)
+        if(matriz[i][0] == matriz[i][1] && matriz[i][1] == matriz[i][2])
         {
-            aux[j] = matriz[i][j];
-        }
-
-        if(verifica(aux))
-        {
-            return aux[0];
+            return matriz[i][0];
         }
     }
+
     return ' ';
 }
 
 char colunas(char matriz[3][3])
 {
-    char aux[3];
-
     for(int i = 0; i < 3; i++)
     {
-        for(int j = 0; j < 3; j++)
+        if(matriz[0][i] == matriz[1][i] && matriz[1][i] == matriz[2][i])
         {
-            aux[j] = matriz[j][i];
-        }
-
-        if(verifica(aux))
-        {
-            return aux[0];
+            return matriz[0][i];
         }
     }
+    
     return ' ';
 }
 
 char diagonais(char matriz[3][3])
 {
-    char aux[3];
-    int j = 0;
-
-    for(int i = 0; i < 3; i++)
+    if(matriz[0][0] == matriz[1][1] && matriz[1][1] == matriz[2][2])
     {
-        aux[i] = matriz[i][i];
-        
-        if(verifica(aux))
-        {
-            return aux[0];
-        }
+        return matriz[0][0];
     }
-
-    for(int i = 2; i >= 0; i--)
+    else if(matriz[0][2] == matriz[1][1] && matriz[1][1] == matriz[2][0])
     {
-        aux[i] = matriz[j][i];
-
-        if(verifica(aux))
-        {
-            return aux[0];
-        }
-
-        j++;
+        return matriz[0][2];
     }
 
     return ' ';
