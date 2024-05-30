@@ -6,7 +6,6 @@
 
 
 char ganhador(char matriz[3][3]);
-bool verifica(char vetor[3]);
 char linhas(char matriz[3][3]);
 char colunas(char matriz[3][3]);
 char diagonais(char matriz[3][3]);
