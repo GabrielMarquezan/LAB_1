@@ -22,7 +22,7 @@ int main()
     {
 
         //Laço que executa a partida
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 9; i++)
         {
             //define o jogador da vez
             if(i % 2 == 0)
@@ -35,7 +35,10 @@ int main()
             }
 
             vencedor = ganhador(jogo);
-            printf("%c", vencedor);
+            if(vencedor == 'X' || vencedor == 'O')
+            {
+                break;
+            }
 
             desenha_jogo(jogo);
             tela_lincol(eixoy, eixox);
@@ -93,10 +96,7 @@ int main()
 
             tela_limpa();
         }
-        break;
     }
-
-
 
     tecla_fim();
     tela_fim();
