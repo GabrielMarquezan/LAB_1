@@ -1,34 +1,34 @@
-#ifndef _telag_h_  // para evitar problemas com inclusão múltipla deste arquivo
+#ifndef _telag_h_  // para evitar problemas com inclusÃ£o mÃºltipla deste arquivo
 #define _telag_h_
 
 //
 // telag.h
 // ------
 //
-// funções de acesso a tela, mouse, relógio
+// funÃ§Ãµes de acesso a tela, mouse, relÃ³gio
 //
 
 #include <stdbool.h>
 
-// inicialização da tela
+// inicializaÃ§Ã£o da tela
 // cria uma janela com o tamanho dado em pixels
-// deve ser executada antes do uso de qualquer outra função da tela
+// deve ser executada antes do uso de qualquer outra funÃ§Ã£o da tela
 void tela_inicio(int largura, int altura, char nome[]);
 
 
-// finalização da tela
-// deve ser chamada no final da utilização da tela, nenhuma outra função da
+// finalizaÃ§Ã£o da tela
+// deve ser chamada no final da utilizaÃ§Ã£o da tela, nenhuma outra funÃ§Ã£o da
 // tela deve ser chamada depois desta.
 void tela_fim(void);
 
 
 // atualiza a tela
-// faz com o que foi desenhado na tela desde a última atualização
-// realmente apareça.
-// caso necessário, espera até que a imagem anterior tenha ficado
+// faz com o que foi desenhado na tela desde a Ãºltima atualizaÃ§Ã£o
+// realmente apareÃ§a.
+// caso necessÃ¡rio, espera atÃ© que a imagem anterior tenha ficado
 // na tela pelo tempo adequado.
-// antes da chamada a esta função a imagem anterior fica sendo exibida, 
-// o conteúdo da nova imagem fica só na memória.
+// antes da chamada a esta funÃ§Ã£o a imagem anterior fica sendo exibida, 
+// o conteÃºdo da nova imagem fica sÃ³ na memÃ³ria.
 void tela_atualiza(void);
 
 // frequencia de atualizacao da tela
@@ -37,20 +37,20 @@ void tela_atualiza(void);
 
 // DESENHO
 
-// desenha um círculo
-// x e y são as coordenadas do centro do círculo, r é o raio
-// l é a largura da linha, corl a cor da linha e corint é a cor
-// do interior do círculo
+// desenha um cÃ­rculo
+// x e y sÃ£o as coordenadas do centro do cÃ­rculo, r Ã© o raio
+// l Ã© a largura da linha, corl a cor da linha e corint Ã© a cor
+// do interior do cÃ­rculo
 void tela_circulo(float x, float y, float r, float l, int corl, int corint);
 
 // desenha uma linha reta
-// x1, y1 e x2, y2 são as coordenadas das pontas, l a largura e corl a cor
+// x1, y1 e x2, y2 sÃ£o as coordenadas das pontas, l a largura e corl a cor
 void tela_linha(float x1, float y1, float x2, float y2, float l, int corl);
 
 // desenha um retangulo
-// x1, y1 são as coordenadas do canto superior esquerdo, 
+// x1, y1 sÃ£o as coordenadas do canto superior esquerdo, 
 // x2, y2 as do inferior direito
-// l é a largura da linha, corl a cor da linha e corint é a cor
+// l Ã© a largura da linha, corl a cor da linha e corint Ã© a cor
 // do interior do retangulo
 void tela_retangulo(float x1, float y1, float x2, float y2, float l,
     int corl, int corint);
@@ -60,11 +60,11 @@ void tela_retangulo(float x1, float y1, float x2, float y2, float l,
 // x,y coordenadas do meio do texto, tam tamanho das letras, c cor, t texto
 void tela_texto(float x, float y, int tam, int c, char t[]);
 
-// desenha texto à esquerda
+// desenha texto Ã  esquerda
 // x,y coordenadas do fim do texto, tam tamanho das letras, c cor, t texto
 void tela_texto_esq(float x, float y, int tam, int c, char t[]);
 
-// desenha texto à direita
+// desenha texto Ã  direita
 // x, y coordenadas do inicio do texto, tam tamanho das letras, c cor, t texto
 void tela_texto_dir(float x, float y, int tam, int c, char t[]);
 
@@ -72,7 +72,7 @@ void tela_texto_dir(float x, float y, int tam, int c, char t[]);
 
 // CORES
 
-// valores para representar cores pré-definidas
+// valores para representar cores prÃ©-definidas
 #define transparente 0
 #define azul 1
 #define vermelho 2
@@ -92,17 +92,17 @@ void tela_altera_cor(int cor,
 
 // ACESSO AO RATO
 
-// coloca nos inteiros apontador por px e py a posição x, y do mouse
+// coloca nos inteiros apontador por px e py a posiÃ§Ã£o x, y do mouse
 void tela_rato_pos(int* px, int* py);
 
-// retorna se o botão do mouse está apertado
+// retorna se o botÃ£o do mouse estÃ¡ apertado
 bool tela_rato_apertado(void);
 
-// retorna se o botão do mouse foi clicado (apertado e solto) desde a última
-// chamada a esta função
+// retorna se o botÃ£o do mouse foi clicado (apertado e solto) desde a Ãºltima
+// chamada a esta funÃ§Ã£o
 bool tela_rato_clicado(void);
 
-// retorna a posição do mouse na última vez que ele foi clicado
+// retorna a posiÃ§Ã£o do mouse na Ãºltima vez que ele foi clicado
 void tela_rato_pos_clique(int* px, int* py);
 
 // retorna uma tecla digitada ou '\0' se nenhuma tecla for digitada
