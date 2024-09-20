@@ -25,14 +25,14 @@ static void tela_inicializa_janela(float l, float a, char n[])
     // cria uma janela
     ALLEGRO_DISPLAY* janela;
     janela = al_create_display(l, a);
-    if (janela == NULL) cai_fora("problema na criaÁ„o de janela do allegro");
+    if (janela == NULL) cai_fora("problema na cria√ß√£o de janela do allegro");
     // esconde o cursor do mouse
     al_hide_mouse_cursor(janela);
     al_set_window_title(janela, n);
 }
 
 // vetor com as cores
-#define NCORES 100 // n˙mero m·ximo de cores diferentes
+#define NCORES 100 // n√∫mero m√°ximo de cores diferentes
 static ALLEGRO_COLOR cores[NCORES];
 static void tela_inicializa_cores(void)
 {
@@ -59,10 +59,10 @@ void tela_altera_cor(int cor,
 ALLEGRO_EVENT_QUEUE* tela_eventos_teclado;
 void tela_inicializa_teclado(void)
 {
-    if (!al_install_keyboard()) cai_fora("problema na inicializaÁ„o do teclado do allegro");
+    if (!al_install_keyboard()) cai_fora("problema na inicializa√ß√£o do teclado do allegro");
     // cria e inicializa a fila de eventos do teclado
     tela_eventos_teclado = al_create_event_queue();
-    if (tela_eventos_teclado == NULL) cai_fora("problema na criaÁ„o da fila de eventos do teclado do allegro");
+    if (tela_eventos_teclado == NULL) cai_fora("problema na cria√ß√£o da fila de eventos do teclado do allegro");
     al_register_event_source(tela_eventos_teclado,
         al_get_keyboard_event_source());
 }
@@ -70,11 +70,11 @@ void tela_inicializa_teclado(void)
 void tela_inicio(int largura, int altura, char nome[])
 {
     // inicializa os subsistemas do allegro
-    if (!al_init()) cai_fora("problema na inicializaÁ„o do allegro");
-    if (!al_install_mouse()) cai_fora("problema na inicializaÁ„o do mouse do allegro");
-    if (!al_init_primitives_addon()) cai_fora("problema na inicializaÁ„o de addons do allegro");
+    if (!al_init()) cai_fora("problema na inicializa√ß√£o do allegro");
+    if (!al_install_mouse()) cai_fora("problema na inicializa√ß√£o do mouse do allegro");
+    if (!al_init_primitives_addon()) cai_fora("problema na inicializa√ß√£o de addons do allegro");
     al_init_font_addon();
-    if (!al_init_ttf_addon()) cai_fora("problema na inicializaÁ„o do addon de fontes ttf");
+    if (!al_init_ttf_addon()) cai_fora("problema na inicializa√ß√£o do addon de fontes ttf");
 
     // inicializa a tela
     tela_inicializa_janela(largura, altura, nome);
@@ -96,14 +96,14 @@ void tela_atualiza(void)
     double quando_mostrar = tempo_ultima_tela + SEGUNDOS_POR_QUADRO;
     double tempo_ate_mostrar = quando_mostrar - agora;
     if (tempo_ate_mostrar > 0) {
-        // È muito cedo, d· uma cochilada
+        // √© muito cedo, d√° uma cochilada
         al_rest(tempo_ate_mostrar);
     }
-    // troca a tela mostrada pela que foi desenhada em memÛria
+    // troca a tela mostrada pela que foi desenhada em mem√≥ria
     al_flip_display();
     tempo_ultima_tela = tela_relogio();
 
-    // limpa todo o canvas em memÛria, para desenhar a prÛxima tela
+    // limpa todo o canvas em mem√≥ria, para desenhar a pr√≥xima tela
     al_clear_to_color(cores[preto]);
 }
 
@@ -185,7 +185,7 @@ bool tela_rato_apertado(void)
 {
     ALLEGRO_MOUSE_STATE rato;
     al_get_mouse_state(&rato);
-    // sÛ nos interessa o bot„o da esquerda
+    // s√≥ nos interessa o bot√£o da esquerda
     return al_mouse_button_down(&rato, 1);
 }
 
@@ -225,7 +225,7 @@ char tela_tecla(void)
             return c;
         }
     }
-    // nada foi pressionado (ou foi pressionado algo n„o imprimÌvel)
+    // nada foi pressionado (ou foi pressionado algo n√£o imprim√≠vel)
     return '\0';
 }
 
